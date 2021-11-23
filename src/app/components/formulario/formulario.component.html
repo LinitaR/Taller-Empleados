@@ -1,0 +1,53 @@
+<div class="text-center contenido">
+<p>Base empleados</p>
+
+<form [formGroup]="form">
+  <p>Name</p>
+  <input type="text" class="form-control" [ngClass]="{'error-validation': sub && f['user'].errors, 'success-validation':user.valid && (user.dirty || user.touched) }" formControlName="user">
+  <p>Document</p>
+  <input type="text" class="form-control" [ngClass]="{'error-validation': sub && f['user'].errors, 'success-validation':user.valid && (user.dirty || user.touched) }" formControlName="user">
+  <p>Phone</p>
+  <input type="text" class="form-control" [ngClass]="{'error-validation': sub && f['user'].errors, 'success-validation':user.valid && (user.dirty || user.touched) }" formControlName="user">
+  <p>Email</p>
+  <input type="text" class="form-control" [ngClass]="{'error-validation': sub && f['user'].errors, 'success-validation':user.valid && (user.dirty || user.touched) }" formControlName="user">
+  <p>Salary</p>
+  <input type="text" class="form-control" [ngClass]="{'error-validation': sub && f['user'].errors, 'success-validation':user.valid && (user.dirty || user.touched) }" formControlName="user">
+  <p>Female</p>
+  <input type="text" class="form-control" [ngClass]="{'error-validation': sub && f['user'].errors, 'success-validation':user.valid && (user.dirty || user.touched) }" formControlName="user">
+  <p>Datebirth</p>
+  <input type="text" class="form-control" [ngClass]="{'error-validation': sub && f['user'].errors, 'success-validation':user.valid && (user.dirty || user.touched) }" formControlName="user">
+  <button class="btn btn-success" (click)="validacion()"> {{ config.config.formComponent.btnAccept }} </button>
+  <!--<input type="text" class="form-control" (keyup)="search($event)">-->
+  <input type="text" class="form-control" (keyup)="searchget($event)">
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="colName">Name</th>
+      <th scope="colDocument">Document</th>
+      <th scope="colPhone">Phone</th>
+      <th scope="colEmail">Email</th>
+      <th scope="colSalary">Salary</th>
+      <th scope="colFemale">Female</th>
+      <th scope="colDatebirth">Datebirth</th>
+      <th scope="colEditar">Editar</th>
+      <th scope="colEliminar">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="users && users.length>0">
+    <tr *ngFor="let item of users">
+      <th scope="row">{{item._id | slice: 0 : 10}}...</th> 
+      <td>{{item.user}}</td>
+      <td><button class="btn btn-primary" (click)="edit(item)"> {{getConfigFc().config.formComponent.btnEdit}} </button></td>
+      <td><button class="btn btn-danger" (click)="delete(item._id)"> Eliminar </button></td>
+      <td><button class="btn" (click)="disEnable(item)" [ngClass]="{'btn-success': item.status == true ,
+        'btn-light': item.status == false }"> Activar </button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+</div>
+
+
